@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalDesign by Adella Studio - Jasa Desain Digital</title>
+    <style>
+        /* Reset dan Font Futuristik */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Orbitron', sans-serif; /* Font futuristik */
+            line-height: 1.6;
+            color: #fff;
+            background: linear-gradient(135deg, #0f0f23, #1a1a2e, #16213e, #0f3460);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        h1, h2, h3 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Header Futuristik */
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            color: #00d4ff;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            border-bottom: 2px solid #00d4ff;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav h1 {
+            font-size: 2rem;
+            text-shadow: 0 0 10px #00d4ff;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 2rem;
+        }
+        nav ul li a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            position: relative;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #ff007f;
+            transition: width 0.3s;
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        nav ul li a:hover {
+            color: #ff007f;
+            text-shadow: 0 0 10px #ff007f;
+        }
+
+        /* Hero Section Futuristik */
+        .hero {
+            background: url('https://via.placeholder.com/1920x600/0f0f23/00d4ff?text=Futuristic+Design') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #00d4ff;
+            padding-top: 80px;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        .hero > div {
+            z-index: 2;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px #00d4ff;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px #ff007f;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #00d4ff; }
+            to { text-shadow: 0 0 40px #00d4ff; }
+        }
+        .btn {
+            background: linear-gradient(45deg, #00d4ff, #ff007f);
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+        .btn:hover {
+            background: linear-gradient(45deg, #ff007f, #00d4ff);
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* Section Umum */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+            z-index: -1;
+        }
+        .card:hover::before {
+            animation: shimmer 1s;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.4);
+            border-color: #ff007f;
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            filter: brightness(0.8);
+        }
+        .card img:hover {
+            filter: brightness(1.2);
+        }
+
+        /* Katalog */
+        #katalog .card h3 {
+            color: #00d4ff;
+            text-shadow: 0 0 10px #00d4ff;
+        }
+
+        /* Pricelist */
+        #pricelist .card {
+            text-align: center;
+        }
+        #pricelist .price {
+            font-size: 2rem;
+            color: #ff007f;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff007f;
+        }
+
+        /* Review */
+        #review .card {
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 127, 0.1));
+            color: #fff;
+        }
+        .stars {
+            color: #ffd700;
+            text-shadow: 0 0 10px #ffd700;
+        }
+
+        /* Kontak */
+        #kontak {
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.2), rgba(255, 0, 127, 0.2));
+            color: #fff;
+            text-align: center;
+            border-radius: 15px;
+            margin: 2rem;
+            padding: 4rem 2rem; /* tambahkan padding agar tombol tidak menumpuk */
+        }
+        #kontak .btn {
+            background: linear-gradient(45deg, #00d4ff, #ff007f);
+            margin-top: 2rem; /* jarak antara teks dan tombol */
+            display: inline-block;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: #00d4ff;
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid #00d4ff;
+        }
+        footer p {
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px #00d4ff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                margin-top: 1rem;
+            }
+            nav ul li {
+                margin-left: 0;
+                margin-bottom: 0.5rem;
+            }
+            .hero h2 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>DigitalDesign by Adella Studio</h1>
+            <ul>
+                <li><a href="#hero">Beranda</a></li>
+                <li><a href="#katalog">Katalog</a></li>
+                <li><a href="#pricelist">Pricelist</a></li>
+                <li><a href="#review">Review</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <div>
+            <h2>Masa Depan Desain Digital</h2>
+            <p>Jasa Desain Futuristik untuk Inovasi Anda</p>
+            <a href="#katalog" class="btn">Jelajahi Katalog</a>
+        </div>
+    </section>
+
+    <section id="katalog">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #00d4ff; text-shadow: 0 0 20px #00d4ff;">Katalog Jasa Desain</h2>
+        <div class="container">
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200/00d4ff/ffffff?text=Logo+Design" alt="Logo Design">
+                <h3>Desain Logo</h3>
+                <p>Logo inovatif dengan elemen futuristik yang membuat brand Anda menonjol di era digital.</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200/ff007f/ffffff?text=Website+Design" alt="Website Design">
+                <h3>Desain Website</h3>
+                <p>Website interaktif dan responsif dengan teknologi terkini untuk pengalaman pengguna luar biasa.</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200/ffd700/ffffff?text=Poster+Design" alt="Poster Design">
+                <h3>Desain Poster</h3>
+                <p>Poster artistik dengan efek visual futuristik untuk promosi acara atau produk Anda.</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200/00ff7f/ffffff?text=Banner+Design" alt="Banner Design">
+                <h3>Desain Banner</h3>
+                <p>Banner digital dengan desain neon dan animasi yang menarik perhatian.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricelist">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #ff007f; text-shadow: 0 0 20px #ff007f;">Pricelist Jasa</h2>
+        <div class="container">
+            <div class="card">
+                <h3>Desain Logo</h3>
+                <p class="price">Rp 500.000 - Rp 2.000.000</p>
+                <p>Berdasarkan kompleksitas dan revisi futuristik.</p>
+            </div>
+            <div class="card">
+                <h3>Desain Website</h3>
+                <p class="price">Rp 2.000.000 - Rp 10.000.000</p>
+                <p>Tergantung fitur interaktif dan integrasi AI.</p>
+            </div>
+            <div class="card">
+                <h3>Desain Poster</h3>
+                <p class="price">Rp 200.000 - Rp 1.000.000</p>
+                <p>Termasuk efek 3D dan animasi.</p>
+            </div>
+            <div class="card">
+                <h3>Desain Banner</h3>
+                <p class="price">Rp 300.000 - Rp 1.500.000</p>
+                <p>Dengan elemen neon dan responsif.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="review">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #ffd700; text-shadow: 0 0 20px #ffd700;">Review Klien</h2>
+        <div class="container">
+            <div class="card">
+                <p>"Desain logo mereka super futuristik! Brand saya jadi terlihat canggih."</p>
+                <p class="stars">★★★★★</p>
+                <p>- Sabrina, Tech Startup</p>
+            </div>
+            <div class="card">
+                <p>"Website dengan animasi keren, pengunjung betah lama!"</p>
+                <p class="stars">★★★★★</p>
+                <p>- Rizkiyah, E-commerce</p>
+            </div>
+            <div class="card">
+                <p>"Poster acara saya viral karena desain uniknya."</p>
+                <p class="stars">★★★★★</p>
+                <p>- Irma, Event Organizer</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak">
+        <h2>Konsultasi Gratis</h2>
+        <p>Hubungi kami via WhatsApp untuk ide desain futuristik Anda.</p>
+        <a href="https://wa.me/089629633771?text=Halo%20DigitalDesign%20by%20Adella%20Studio,%20saya%20ingin%20konsultasi%20desain." class="btn">Chat WhatsApp</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 DigitalDesign by Adella Studio. All rights reserved.</p>
+        <p>Alamat: Jl. In aja dulu, Indonesia</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling untuk navigasi
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animasi futuristik untuk card saat scroll
+        const cards = document.querySelectorAll('.card');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        });
+
+        cards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px) scale(0.9)';
+            card.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(card);
+        });
+
+        // Efek parallax sederhana untuk hero
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrollY = window.scrollY;
+            hero.style.backgroundPositionY = scrollY * 0.5 + 'px';
+        });
+    </script>
+</body>
+</html>
